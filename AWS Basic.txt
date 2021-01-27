@@ -1,0 +1,90 @@
+AWS Basic
+
+Create Administrators group (AWS CLI)
+
+First go to the AWS IAN site. 
+Create Group called admin
+- Make sure the group has ad privillges 
+- Make sure you create a password and click the box new user must creat a passsword
+
+Now you created the Group
+
+Create Admin User
+
+Select Create User
+- Follow steps on GUI
+
+From command line: Make sure you have installed AWS installer currently I have aws-cli/2.1.14 Py/3.7.9
+Once that is downloaded find you user that you created on the IAM GUI 
+- Find : Access Key ID
+- Find : Secret Access Key
+
+Now go to CMLine:
+
+c:> aws configure 
+- Access Key ID __
+- Secret Access Key __
+Other:
+
+Now you are connected to your aws acount!!
+
+Create a new group  with this command 
+
+c:> aws iam creat-group --group-name Admin 
+
+Boom should Work!!
+
+List Group:
+c: aws iam list-groups
+
+
+Add policy to a group (Like AD): 
+c: aws iam attach-group-policy --group-name Admins --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+
+(You know it works when nothing happens)
+
+Base:
+
+c: aws iam 
+- attach-group-policy
+	- Add a group policy
+	
+--group-name <gname>
+	- Asigned group
+
+--policy-arn <policy aws path> (arn:aws:iam::aws:policy/AdministratorAccess
+	-- unknown
+	
+Check if worked!!
+c: aws iam list-attached-group-policies --group-name Admins
+
+
+Nice now that a group has been created now you have to add users!!
+
+How to pick the right user access??
+
+Check the box [] Programmatic access
+// Only if the user needs to Make API calls, use AWS CLI, or Tools for Windows Powershell. 
+// Then create Access key and Secret Access key 
+
+Check the box [] AWS Managemett console access 
+// Only if user needs access to AWS Management Console. 
+// This Creates a password for the user
+
+ When adding policys the best practice is to put USERS into GROUPS so you just give POLICYS to the GROUP
+ rather than the Indivual.
+ 
+ You can give indivual users policys but lets try not to at all cost. 
+ 
+ ADD Tags to help define and ID the user
+ 
+ Follow directions on GUI If using GUI
+ 
+ If NOTTT!!!
+ 
+ Create User (AWS CLI):
+ 
+
+ 
+ 
+ 
